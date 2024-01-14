@@ -1,0 +1,23 @@
+div{
+    text-align: center;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+}
+
+td{
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+}
+table{
+    margin: auto;
+    border: collapse;
+}
+
+.cell{
+    width: 100%; /*Make the input fill the entire cell*/
+    height: 100%; /* Make the input fill the entire cell*/
+    box-sizing: border-box; /* Include padding and border in the width/height*/
+    text-align: center; /* Center the text in the input*/
+}
