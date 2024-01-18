@@ -3,11 +3,6 @@ import "./Table.css";
 
 const GameMatrix = () => {
 
-    // const oneTo25 = new Set();
-    // for (let i = 1; i <= 25; i++) {
-    //   oneTo25.add(i);
-    // }
-
   const [isLocked, setIsLocked] = useState(false);
   const [matrix, setMatrix] = useState(Array.from({ length: 5 }, () => Array(5).fill(null)));
   const win = useRef(false);
@@ -43,10 +38,10 @@ const GameMatrix = () => {
     
 //   }
     
-    const crossedRowCountIncrementor = () => {
-        crossedRowCount.current++;
-        console.log("Number of rows crossed",crossedRowCount);
-    }
+    // const crossedRowCountIncrementor = () => {
+    //     crossedRowCount.current++;
+    //     console.log("Number of rows crossed",crossedRowCount);
+    // }
 
     useEffect(() => {
       if(win.current!=true){
@@ -107,7 +102,7 @@ const GameMatrix = () => {
         // if(rowsCrossed > 0 && rIndex.length!=rowsCrossed){
         //     crossedRowCountIncrementor(rowsCrossed);
         // }
-        if(rIndex.length + cIndex.length + dIndex.length === 5){
+        if(rIndex.length + cIndex.length + dIndex.length >= 5){
             win.current = true;
             setShowGameOverAnimation(true);
             return;
@@ -144,9 +139,9 @@ const GameMatrix = () => {
     }
   };
 
-  const handleAnimationEnd = () => {
-    setShowGameOverAnimation(false);
-  }
+  // const handleAnimationEnd = () => {
+  //   setShowGameOverAnimation(false);
+  // }
 
   const handleAutoFill = () => {
     const autoFilledMatrix = generateRandomMatrix();
@@ -235,16 +230,10 @@ const GameMatrix = () => {
       )}
       {!isCellClicked && <button onClick={handleAutoFill}>Auto-Fill</button>}
 
-      {/* {matrix.map((row, rowIndex) => {
-        if (isRowCrossed(row)) {
-          return renderCrossedRowLine(rowIndex);
-        }
-        return null;
-      })} */}
       {showGameOverAnimation && (
-        <div className='blur'><div className='game-over-animation' onAnimationEnd={handleAnimationEnd}>
-          Game Over! You Win!
-        </div></div>
+        <div><button className='game-over-animation'>
+          You Win! Play Again?
+        </button></div>
       )}
 
       <style>
@@ -254,10 +243,14 @@ const GameMatrix = () => {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            width: 25%;
+            height: 10%;
             font-size: 24px;
-            color: green;
+            color: darkgreen;
             background-color: white;
-            animation: fadeInOut 10s ease-in-out;
+            animation: fadeInOut 3s ease-in-out;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            letter-spacing: 0.3vw;  
           }
 
           @keyframes crossed-row {
