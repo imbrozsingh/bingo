@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import "./Table.css";
 
 const GameMatrix = () => {
 
@@ -9,6 +10,12 @@ const GameMatrix = () => {
 
   const [isLocked, setIsLocked] = useState(false);
   const [matrix, setMatrix] = useState(Array.from({ length: 5 }, () => Array(5).fill(null)));
+  const win = useRef(false);
+  const [showGameOverAnimation, setShowGameOverAnimation] = useState(false);
+  const [isCellClicked, setIsCellClicked] = useState(false);
+  const [crossedRow, setCrossedRow] = useState([]);
+  const [crossedColumn, setCrossedColumn] = useState([]);
+  const [crossedDiagonal, setCrossedDiagonal] = useState([]);
   const counter = useRef(0);
   //   const [counter, setCounter] = useState(0);
   //   const [crossedRowCount, setCrossedRowCount] = useState(0);
@@ -35,22 +42,34 @@ const GameMatrix = () => {
     
     
 //   }
-
+    
     const crossedRowCountIncrementor = () => {
         crossedRowCount.current++;
         console.log("Number of rows crossed",crossedRowCount);
     }
 
     useEffect(() => {
+      if(win.current!=true){
         let rowsCrossed, columnsCrossed, diagonalCrossed = 0;
         let rIndex = [];
         let cIndex = [];
         let dIndex = [];
         
+        const setCrossedRows = () => {
+          setCrossedRow(rIndex);
+      }
+      const setCrossedColumns = () => {
+        setCrossedColumn(cIndex);
+    }
+    const setCrossedDiagonals = () => {
+      setCrossedDiagonal(dIndex);
+  }
+
         matrix.forEach((row, rowIndex) => {
             if(row.every(cell => cell === 'X')){
                 console.log(`Row ${rowIndex + 1} is fully crossed horizontally!`);
                 rIndex.push(rowIndex);
+                setCrossedRows();
                 console.log("rIndex", rIndex)
                 if(rIndex.includes(rowIndex)){
                     rowsCrossed++;
@@ -62,6 +81,7 @@ const GameMatrix = () => {
             if (matrix.every((row) => row[colIndex] === 'X')) {
               console.log(`Column ${colIndex + 1} is fully crossed vertically!`);
               cIndex.push(colIndex);
+              setCrossedColumns();
               console.log("cIndex", cIndex);
               if(cIndex.includes(colIndex)){
                 columnsCrossed++;
@@ -72,12 +92,14 @@ const GameMatrix = () => {
         if(matrix.every((row, index) => row[index] === 'X')){
             console.log(`Main diagonal is fully crossed!`);
             dIndex.push("Main");
+            setCrossedDiagonals();
             diagonalCrossed++;
             console.log("dIndex", dIndex);
         }
         if(matrix.every((row, index) => row[matrix.length-1-index] === 'X')){
             console.log(`Secondary diagonal is fully crossed!`);
             dIndex.push("Secondary")
+            setCrossedDiagonals();
             diagonalCrossed++;
             console.log("dIndex", dIndex);
         }
@@ -86,21 +108,22 @@ const GameMatrix = () => {
         //     crossedRowCountIncrementor(rowsCrossed);
         // }
         if(rIndex.length + cIndex.length + dIndex.length === 5){
-            const win = true;
-            console.log(win);
-            return win;
+            win.current = true;
+            setShowGameOverAnimation(true);
+            return;
           }
-          console.log(matrix)
+          console.log(matrix)}
     
     }, [matrix, isLocked])
     
 
-  const handleNumberClick = (rowIndex, colIndex) => {
-    if (isLocked && matrix[rowIndex][colIndex] !== 'X' && crossedRowCount.current <= 5) {
+    const handleNumberClick = (rowIndex, colIndex) => {
+    if (isLocked && matrix[rowIndex][colIndex] !== 'X' && crossedRowCount.current <= 5 && !win.current) {
       // Cross the clicked number
       const newMatrix = matrix.map(row => row.map(cell => cell));
       newMatrix[rowIndex][colIndex] = 'X';
       setMatrix(newMatrix);
+      setIsCellClicked(true);
       
     } 
     else if (!isLocked) {
@@ -109,16 +132,77 @@ const GameMatrix = () => {
       const numValue = counter.current;
       console.log(numValue);
       const newMatrix = matrix.map(row => row.map(cell => cell));
-      newMatrix[rowIndex][colIndex] = numValue;
-      setMatrix(newMatrix);
+      if(newMatrix[rowIndex][colIndex] != null){
+          counter.current-- ;
+      }
+      else{newMatrix[rowIndex][colIndex] = numValue;
+      setMatrix(newMatrix);}
+      if(numValue == 25){
+        setIsLocked(true);
+      }
     
     }
   };
 
+  const handleAnimationEnd = () => {
+    setShowGameOverAnimation(false);
+  }
+
+  const handleAutoFill = () => {
+    const autoFilledMatrix = generateRandomMatrix();
+    setIsLocked(true);
+    setMatrix(autoFilledMatrix);
+    setIsCellClicked(false);
+  };
+
+  const generateRandomMatrix = () => {
+    const numbers = Array.from({length: 25}, (_, index) => index + 1);
+    const shuffledNumbers = shuffleArray(numbers);
+
+    let autoFilledMatrix = Array.from({length: 5}, () => Array(5).fill(null));
+
+    for(let rowIndex = 0; rowIndex < 5; rowIndex++){
+      for(let colIndex = 0; colIndex < 5; colIndex++){
+        autoFilledMatrix[rowIndex][colIndex] = shuffledNumbers[rowIndex * 5 + colIndex];
+      }
+    }
+    return autoFilledMatrix
+  };
+
+  const shuffleArray = (array) => {
+    const shuffledArray = [...array];
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+    return shuffledArray;
+  };
+  
+  const setBingoColor = (letterIndex) => {
+    if(crossedRow.length+crossedColumn.length+crossedDiagonal.length>=letterIndex){
+      return "#9ecaed";
+    }
+    else{
+      return 'rgb(58, 24, 114)';
+    }
+    // if(crossedColumn.includes(letterIndex)){
+    //   return "red";
+    // }
+    // if(crossedDiagonal.includes(letterIndex)){
+    //   return "red";
+    // }
+  }
+  
   return (
-    <div style={{ textAlign: 'center', position: 'relative' }}>
-      <h2>Number Matrix Game</h2>
-      <table style={{ borderCollapse: 'collapse', margin: '20px auto' }}>
+    <div style={{ textAlign: 'center', position: 'relative', fontSize: '0.5vw' }}>
+      <h2 style={{ fontSize: '3.5vw', letterSpacing: '0.8vw' }}>
+        <span style={{ color: setBingoColor(1)}}>B</span>
+        <span style={{ color: setBingoColor(2) }}>I</span>
+        <span style={{ color: setBingoColor(3) }}>N</span>
+        <span style={{ color: setBingoColor(4) }}>G</span>
+        <span style={{ color: setBingoColor(5) }}>O</span>
+      </h2>
+      <table style={{ borderCollapse: 'separate', margin: '40px auto', padding: '10px', fontSize: '2vw' }}>
         <tbody>
           {matrix.map((row, rowIndex) => (
             <tr key={rowIndex}>
@@ -130,6 +214,11 @@ const GameMatrix = () => {
                     height: '40px',
                     border: '1px solid black',
                     position: 'relative',
+                    color: crossedRow.includes(rowIndex) || crossedColumn.includes(colIndex) || (crossedDiagonal.includes("Main") && rowIndex === colIndex) || (crossedDiagonal.includes("Secondary") && rowIndex === matrix.length - 1 - colIndex) ? '#9ecaed' : 'white',
+                    backgroundColor: crossedRow.includes(rowIndex) || crossedColumn.includes(colIndex) || (crossedDiagonal.includes("Main") && rowIndex === colIndex) || (crossedDiagonal.includes("Secondary") && rowIndex === matrix.length - 1 - colIndex) ? 'rgb(58, 24, 114)' : '#291149',
+                    borderColor: crossedRow.includes(rowIndex) || crossedColumn.includes(colIndex) || (crossedDiagonal.includes("Main") && rowIndex === colIndex) || (crossedDiagonal.includes("Secondary") && rowIndex === matrix.length - 1 - colIndex) ? '#9fffff' : '',
+                    // boxShadow: crossedRow.includes(rowIndex) || crossedColumn.includes(colIndex) || (crossedDiagonal.includes("Main") && rowIndex === colIndex) || (crossedDiagonal.includes("Secondary") && rowIndex === matrix.length - 1 - colIndex) ? 'red' : '',
+                    transition:  'all 0.3s linear',
                   }}
                   onClick={() => {handleNumberClick(rowIndex, colIndex)}}
                 >
@@ -141,9 +230,10 @@ const GameMatrix = () => {
         </tbody>
       </table>
 
-      {!isLocked && (
+      {!isLocked && !isCellClicked && (
         <button onClick={lockValues}>Lock Values</button>
       )}
+      {!isCellClicked && <button onClick={handleAutoFill}>Auto-Fill</button>}
 
       {/* {matrix.map((row, rowIndex) => {
         if (isRowCrossed(row)) {
@@ -151,12 +241,36 @@ const GameMatrix = () => {
         }
         return null;
       })} */}
+      {showGameOverAnimation && (
+        <div className='blur'><div className='game-over-animation' onAnimationEnd={handleAnimationEnd}>
+          Game Over! You Win!
+        </div></div>
+      )}
 
       <style>
         {`
+          .game-over-animation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: green;
+            background-color: white;
+            animation: fadeInOut 10s ease-in-out;
+          }
+
           @keyframes crossed-row {
             to {
               width: 0%;
+            }
+          }
+          @keyframes fadeInOut {
+            0% {
+              opacity: 0;
+            }
+            50% {
+              opacity: 1;
             }
           }
         `}
