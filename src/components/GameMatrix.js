@@ -150,6 +150,20 @@ const GameMatrix = () => {
     setIsCellClicked(false);
   };
 
+  const handlePlayAgain = () => {
+    const emptyMatrix = generateEmptyMatrix();
+    setIsLocked(false);
+    setMatrix(emptyMatrix);
+    setIsCellClicked(false);
+    win.current = false;
+    setCrossedRow([]);
+    setCrossedColumn([]);
+    setCrossedDiagonal([]);
+    crossedRowCount.current = 0;
+    counter.current = 0;
+    setShowGameOverAnimation(false);
+  }
+
   const generateRandomMatrix = () => {
     const numbers = Array.from({length: 25}, (_, index) => index + 1);
     const shuffledNumbers = shuffleArray(numbers);
@@ -172,6 +186,12 @@ const GameMatrix = () => {
     }
     return shuffledArray;
   };
+
+  const generateEmptyMatrix = () => {
+    const emptyMatrix = Array.from({length: 5}, () => Array(5).fill(null));
+
+    return emptyMatrix
+  }
   
   const setBingoColor = (letterIndex) => {
     if(crossedRow.length+crossedColumn.length+crossedDiagonal.length>=letterIndex){
@@ -231,9 +251,11 @@ const GameMatrix = () => {
       {!isCellClicked && <button onClick={handleAutoFill}>Auto-Fill</button>}
 
       {showGameOverAnimation && (
-        <div><button className='game-over-animation'>
+        <div>
+          {isCellClicked && <button className='game-over-animation' onClick={handlePlayAgain}>
           You Win! Play Again?
-        </button></div>
+        </button>}
+        </div>
       )}
 
       <style>
