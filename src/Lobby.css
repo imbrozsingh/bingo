@@ -1,0 +1,32 @@
+
+
+.LobbyBox{
+    margin: 5%;
+    padding-bottom: 1%;
+    border-radius: .5em;
+    background-color: #f3b462;
+    font-size: xx-large;
+    justify-content: left;
+    position: relative;
+    
+}
+
+.PlayerBox{
+    /* border: 2px solid red; */
+    box-shadow: 0 0 1px 1px #f2ebc0 inset;
+    /* border-radius: .5em; */
+    width: 40%;
+    padding: 1%;
+    margin-left: 2%;
+    margin-right: 2%;
+    font-size: x-large;
+    justify-content: left;
+    display: flex;
+    position: relative;
+    
+}
+
+#P1{
+    margin-top: 5%;
+}
+

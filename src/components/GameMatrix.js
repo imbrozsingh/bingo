@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import "./Table.css";
+import { useNavigate } from 'react-router-dom';
 
 const GameMatrix = () => {
 
@@ -151,7 +152,24 @@ const GameMatrix = () => {
     setIsCellClicked(false);
   };
 
+
+  const navigate = useNavigate();
   const handlePlayAgain = () => {
+    navigate('/');
+    const emptyMatrix = generateEmptyMatrix();
+    setIsLocked(false);
+    setMatrix(emptyMatrix);
+    setIsCellClicked(false);
+    win.current = false;
+    setCrossedRow([]);
+    setCrossedColumn([]);
+    setCrossedDiagonal([]);
+    crossedRowCount.current = 0;
+    counter.current = 0;
+    setShowGameOverAnimation(false);
+  }
+
+  const handleReset = () => {
     const emptyMatrix = generateEmptyMatrix();
     setIsLocked(false);
     setMatrix(emptyMatrix);
@@ -255,6 +273,11 @@ const GameMatrix = () => {
         </button>
       )} */}
       {!isCellClicked && <button onClick={handleAutoFill}><span>Auto-Fill</span>
+      <svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"/>
+  </svg>
+  </button>}
+  {!isCellClicked && <button onClick={handleReset}><span>Reset</span>
       <svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
     <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"/>
   </svg>

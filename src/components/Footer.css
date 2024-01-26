@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap');
+
 footer{
     position: relative;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    display: block;
+    padding: 0;
     bottom: 0;
     left: 0;
     top: 5vw;
@@ -7,17 +13,11 @@ footer{
     height: 5vw;
     display: block;
     min-height: auto;
-    color: #605156;
+    color: #4a3d41;
     background-color: #aba1a4;
-    font-family: cursive;
-    
+    font-family: 'Sixtyfour', sans-serif;
 }
 
-.LobbyBox{
-    border: 2px solid #605156;
-}
-
-.PlayerBox{
-    /* border: 2px solid red; */
-    box-shadow: 0 0 1px 1px red inset;
+ p{
+    padding-top: 5px;
 }

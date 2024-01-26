@@ -23,7 +23,7 @@ const Homepage = () => {
                         <li>Now click on a number to mark it crossed and the same number will be marked crossed in matrix of other players.</li>
                         <li>Similarly, when player 2 crosses a number, all other player's numbers will be marked crossed.</li>
                         <li>You have to cross numbers in such a way that in a row/column/diagonal all numbers are crossed.</li>
-                        <li>When 5 such rows/columns/diagonals are crossed the game will end and the player with 5 such rows/columns/diagonals crossed first will win</li>
+                        <li>When 5 such rows/columns/diagonals are crossed the game will end and the player with 5 such rows/columns/diagonals crossed first will win.</li>
                     </ol>
                 </p>
                 <button onClick={handleNewGame}><span>New Game</span>
