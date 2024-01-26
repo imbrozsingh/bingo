@@ -1,0 +1,23 @@
+footer{
+    position: relative;
+    bottom: 0;
+    left: 0;
+    top: 5vw;
+    width: 100%;
+    height: 5vw;
+    display: block;
+    min-height: auto;
+    color: #605156;
+    background-color: #aba1a4;
+    font-family: cursive;
+    
+}
+
+.LobbyBox{
+    border: 2px solid #605156;
+}
+
+.PlayerBox{
+    /* border: 2px solid red; */
+    box-shadow: 0 0 1px 1px red inset;
+}
