@@ -1,7 +1,3 @@
-h1{
-    color: #F06060;
-}
-
 .LobbyBox{
     margin: 5%;
     padding-bottom: 1%;
@@ -17,10 +13,13 @@ h1{
     
 }
 
-p{
+.inLobbyHeading, .shareText {
     border-bottom: 1px solid #79a49a;
     margin-bottom: 0%;
     color: #5b7b73;
+    margin-top: 1%;
+    padding-bottom: 1%;
+    padding-top: 0%;
 }
 
 
