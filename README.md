@@ -15,4 +15,4 @@ Now when all numbers are filled, Player 1 click on number he/she want to cross. 
 Then Player 2 clicks on number he/she wishes to cross according to his matrix pattern and so on.
 Player which gets a total of 5 crossed rows/column/diagonal wins the game.
 
-### [Imbroz Singh](instagram.com/imbrozsingh)
+### [Imbroz Singh](https://www.instagram.com/imbrozsingh)
