@@ -1,4 +1,4 @@
-import './App.scss';
+import './components/css/App.scss';
 import GameMatrix from './components/GameMatrix';
 import Homepage from './Homepage';
 import Lobby from './Lobby';

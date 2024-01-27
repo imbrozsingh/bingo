@@ -1,4 +1,4 @@
-import './Lobby.css';
+import './components/css/Lobby.css';
 import { useNavigate } from 'react-router-dom';
 
 const Lobby = () => {

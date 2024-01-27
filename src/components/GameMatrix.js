@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import "./Table.css";
+import "./css/Table.css";
 import { useNavigate } from 'react-router-dom';
 
 const GameMatrix = () => {

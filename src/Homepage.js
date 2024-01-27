@@ -1,4 +1,4 @@
-import './components/Table.css'
+import './components/css/Table.css'
 import { useNavigate } from 'react-router-dom'
 
 const Homepage = () => {
@@ -15,13 +15,13 @@ const Homepage = () => {
                 <p style={{ fontSize: '1.2rem', marginTop: 'auto', marginBottom: 'auto', marginLeft: '20vw', marginRight: '20vw' }}>
                     <ol style={{ textAlign: 'left', lineHeight: '2', color: '#F06060', letterSpacing: '0.1vw', color: '#49635d' }}>
                         <li>Click on "New Game" to start the game.</li>
-                        <li>There is a 5x5 matrix which you can fill with numbers from 1-25</li>
+                        <li>There is a 5x5 matrix <img src="../icons8-table-32.png" style={{verticalAlign: 'middle'}} ></img> which you can fill with numbers from 1-25</li>
                         <li>Start setting number by clicking on empty cell(You can also randomly fill numbers by clicking on Auto-Fill button)</li>
                         <li>Arrange numbers from 1-25 in any pattern you like or know is good.</li>
                         <li>When you have set the numbers till 25, the matrix is locked and set</li>
                         <li>Now click on a number to mark it crossed and the same number will be marked crossed in matrix of other players.</li>
                         <li>Similarly, when player 2 crosses a number, all other player's numbers will be marked crossed.</li>
-                        <li>You have to cross numbers in such a way that in a row/column/diagonal all numbers are crossed.</li>
+                        <li>You have to cross numbers in such a way that in a row/column/diagonal all numbers are crossed <img src="../icon.ico" style={{verticalAlign: 'middle'}} ></img></li>
                         <li>When 5 such rows/columns/diagonals are crossed the game will end and the player with 5 such rows/columns/diagonals crossed first will win.</li>
                     </ol>
                 </p>
