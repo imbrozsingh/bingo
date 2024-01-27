@@ -228,7 +228,7 @@ const GameMatrix = () => {
   }
   
   return (
-    <div style={{ textAlign: 'center', position: 'relative', fontSize: '0.5vw' }}>
+    <div style={{ textAlign: 'center', position: 'relative', fontSize: '0.5vw', height: '80vh' }}>
       <h2 style={{ fontSize: '3.5vw', letterSpacing: '0.8vw' }}>
         <span className='bingoHeading' style={{ color: setBingoColor(1) }}>B</span>
         <span className='bingoHeading' style={{ color: setBingoColor(2) }}>I</span>

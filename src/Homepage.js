@@ -1,5 +1,5 @@
 import './components/Table.css'
-import Lobby from './Lobby'
+// import Lobby from './Lobby'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 const Homepage = () => {
@@ -11,7 +11,7 @@ const Homepage = () => {
     };
 
     return (
-        <div style={{ textAlign: 'center', position: 'relative', fontSize: '0.5vw' }}>
+        <div style={{ textAlign: 'center', position: 'relative', fontSize: '0.5vw', height: '90vh' }}>
             <h2 style={{ fontSize: '3.5vw', letterSpacing: '0.5vw', textShadow: '0 0 10px #F2EBC0 inset', WebkitTextStrokeWidth: '1px', WebkitTextStrokeColor: '#F2EBC0' }}>How to Play?</h2>
                 <p style={{ fontSize: '1.2rem', marginTop: 'auto', marginBottom: 'auto', marginLeft: '20vw', marginRight: '20vw' }}>
                     <ol style={{ textAlign: 'left', lineHeight: '2', color: '#F06060', letterSpacing: '0.1vw' }}>

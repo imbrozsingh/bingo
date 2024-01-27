@@ -2,15 +2,18 @@
 
 $container-width: 1000px;
 
-html {
+.App {
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
-html, body {
+body {
   margin: 0;
   padding: 0;
 }
@@ -22,34 +25,34 @@ body {
   font-family: 'Open Sans', sans-serif;  
 }
 
-.container {
-  max-width: $container-width;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+// .container {
+//   max-width: $container-width;
+//   margin: 0 auto;
+//   padding: 0 20px;
+// }
 
-.screen-reader-text {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-    white-space: nowrap;  
-}
+// .screen-reader-text {
+//     border: 0;
+//     clip: rect(0 0 0 0);
+//     height: 1px;
+//     margin: -1px;
+//     overflow: hidden;
+//     padding: 0;
+//     position: absolute;
+//     width: 1px;
+//     white-space: nowrap;  
+// }
 
-section {
-  height: 200vh;
-  color: #fff;
-}
+// section {
+//   height: 200vh;
+//   color: #fff;
+// }
 
-.icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-}
+// .icon {
+//   display: inline-block;
+//   width: 1em;
+//   height: 1em;
+//   stroke-width: 0;
+//   stroke: currentColor;
+//   fill: currentColor;
+// }

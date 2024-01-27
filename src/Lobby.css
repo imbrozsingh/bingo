@@ -1,19 +1,43 @@
-
+h1{
+    color: #F06060;
+}
 
 .LobbyBox{
     margin: 5%;
     padding-bottom: 1%;
     border-radius: .5em;
-    background-color: #f3b462;
+    background: #8dbfb3;
+    box-shadow:  5px 5px 10px #7ba69c,
+                 -5px -5px 10px #9fd8ca;
     font-size: xx-large;
     justify-content: left;
     position: relative;
+    display: flex;
+    flex-direction: column;
     
 }
 
+p{
+    border-bottom: 1px solid #79a49a;
+    margin-bottom: 0%;
+    color: #5b7b73;
+}
+
+
+.topRow, .bottomRow{
+    display: flex;
+    justify-content: center;
+    /* margin-top: 1%; */
+    border-bottom: 1px solid #79a49a;
+    width: 100%;
+}
+
+.topRow>div:first-child, .bottomRow>div:first-child{
+    border-right: 1px solid #79a49a;
+}
+
 .PlayerBox{
-    /* border: 2px solid red; */
-    box-shadow: 0 0 1px 1px #f2ebc0 inset;
+    background: #8DBFB3;
     /* border-radius: .5em; */
     width: 40%;
     padding: 1%;
@@ -26,7 +50,8 @@
     
 }
 
-#P1{
-    margin-top: 5%;
+.codeBox{
+    background: #ffffff;
+    box-shadow: inset 5px 5px 36px #c9c9c9,
+                inset -5px -5px 36px #ffffff;
 }
-

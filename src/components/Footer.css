@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap');
 
 footer{
-    position: relative;
+    /* position: relative;
     margin-top: 1vw;
     margin-bottom: 1vw;
     display: block;
@@ -15,7 +15,15 @@ footer{
     min-height: auto;
     color: #4a3d41;
     background-color: #aba1a4;
+    font-family: 'Sixtyfour', sans-serif; */
+    background-color: #aba1a4;
     font-family: 'Sixtyfour', sans-serif;
+    color: #4a3d41;
+    padding: 0; /* Padding for the content inside the footer */
+    margin-top: 10%;
+    text-align: center; /* Align text to center */
+    max-height: 15vh;
+    z-index: 1000; /* Ensure footer is above other content */
 }
 
  p{
