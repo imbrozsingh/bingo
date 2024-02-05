@@ -16,4 +16,12 @@ In digital version, we have a 5x5 matrix.
 8. Then Player 2 clicks on number he/she wishes to cross according to his matrix pattern and so on.
 9. Player which gets a total of 5 crossed rows/column/diagonal wins the game.
 
+#### Reference images
+![image](https://github.com/imbrozsingh/bingo/assets/71779518/51badeac-69a7-4440-bc62-e354228739ad)
+![image](https://github.com/imbrozsingh/bingo/assets/71779518/a4c90825-63c8-4734-b49d-f24e805ac195)
+![image](https://github.com/imbrozsingh/bingo/assets/71779518/22051997-6fc3-41f1-b03b-94dc70ed63ed)
+![image](https://github.com/imbrozsingh/bingo/assets/71779518/59af953c-7802-430d-8d84-f6436eb1987f)
+![image](https://github.com/imbrozsingh/bingo/assets/71779518/ced7baac-5f94-4d4e-bbab-50c205d26cf4)
+
+
 ### [Imbroz Singh](https://www.instagram.com/imbrozsingh)
